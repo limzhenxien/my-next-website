@@ -1,14 +1,15 @@
-# My Website
+# SydneyShuttle - Badminton Court Booking
 
-A modern web application built with Next.js, TypeScript, and Tailwind CSS.
+A Sydney-based badminton court booking platform that allows users to find and book courts from various providers like NBC, KBC, and Alpha in one place.
 
 ## Features
 
-- 🚀 **Fast Performance**: Built on Next.js for optimal speed and user experience
-- 🎨 **Modern UI**: Beautiful and responsive design with Tailwind CSS
-- 🔒 **Type Safety**: Full TypeScript support for better developer experience
-- 📱 **Responsive**: Looks great on all devices - mobile, tablet, and desktop
-- 🧩 **Component-Based**: Modular architecture with reusable components
+- 🔍 **Location Search**: Find courts near you by entering your postcode or suburb
+- 📅 **Date & Time Selection**: Choose your preferred date and time for playing
+- 🏸 **Venue Comparison**: Compare availability and prices across different venues
+- 📱 **Responsive Design**: Works seamlessly across desktop, tablet, and mobile devices
+- 🔄 **Real-time Availability**: Get up-to-date information on court availability
+- 📊 **Venue Profiles**: Detailed information about each badminton venue
 
 ## Getting Started
 
@@ -22,8 +23,8 @@ A modern web application built with Next.js, TypeScript, and Tailwind CSS.
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/my-website.git
-cd my-website
+git clone https://github.com/yourusername/sydney-shuttle.git
+cd sydney-shuttle
 ```
 
 2. Install dependencies:
@@ -47,11 +48,12 @@ yarn dev
 ## Project Structure
 
 ```
-my-website/
+sydney-shuttle/
 ├── app/                  # Next.js App Router
 │   ├── components/       # Reusable components
 │   │   ├── Navbar.tsx    # Navigation component
-│   │   └── Footer.tsx    # Footer component
+│   │   ├── Footer.tsx    # Footer component
+│   │   └── SearchForm.tsx # Court search form
 │   ├── globals.css       # Global styles
 │   ├── layout.tsx        # Root layout
 │   └── page.tsx          # Home page
@@ -64,27 +66,19 @@ my-website/
 └── tsconfig.json         # TypeScript configuration
 ```
 
-## Customization
+## Road Map
 
-This project is designed to be easily customizable:
+- **Court Booking System**: Implement actual booking functionality with payment processing
+- **User Accounts**: Allow users to create accounts, view booking history, and save preferences
+- **Venue Integration**: API integration with partner venue booking systems
+- **Reviews & Ratings**: Allow users to rate and review venues
+- **Mobile App**: Develop native mobile applications for iOS and Android
 
-- Update content in `app/page.tsx`
-- Modify styles in `app/globals.css` and component-specific styles
-- Add new components in `app/components/`
-- Configure Tailwind in `tailwind.config.js`
+## Partner Venues
 
-## Deployment
-
-This application can be easily deployed to Vercel:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyourusername%2Fmy-website)
-
-Or follow these steps for manual deployment:
-
-1. Push your code to a GitHub repository
-2. Sign up for [Vercel](https://vercel.com)
-3. Import your repository
-4. Deploy!
+- **NBC Badminton Centre**: Premium courts with professional facilities
+- **KBC Badminton**: Community-focused badminton venues with competitive pricing
+- **Alpha Badminton Club**: High-quality courts with coaching services
 
 ## License
 

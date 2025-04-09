@@ -13,22 +13,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "My Website - A Modern Web Application",
-  description: "A modern web application built with Next.js, TypeScript, and Tailwind CSS",
-  keywords: ["next.js", "react", "typescript", "tailwind css", "web application"],
-  authors: [{ name: "Your Name" }],
-  creator: "Your Name",
-  publisher: "Your Name",
+  title: "SydneyShuttle - Badminton Court Booking",
+  description: "Find and book available badminton courts across Sydney in just a few clicks",
+  keywords: ["badminton", "sydney", "court booking", "NBC", "KBC", "Alpha", "badminton courts"],
+  authors: [{ name: "SydneyShuttle" }],
+  creator: "SydneyShuttle",
+  publisher: "SydneyShuttle",
   openGraph: {
-    title: "My Website - A Modern Web Application",
-    description: "A modern web application built with Next.js, TypeScript, and Tailwind CSS",
+    title: "SydneyShuttle - Badminton Court Booking",
+    description: "Find and book available badminton courts across Sydney in just a few clicks",
     type: "website",
-    siteName: "My Website",
+    siteName: "SydneyShuttle",
   },
   twitter: {
     card: "summary_large_image",
-    title: "My Website - A Modern Web Application",
-    description: "A modern web application built with Next.js, TypeScript, and Tailwind CSS",
+    title: "SydneyShuttle - Badminton Court Booking",
+    description: "Find and book available badminton courts across Sydney in just a few clicks",
   },
 };
 

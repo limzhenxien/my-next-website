@@ -14,7 +14,13 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0 flex items-center">
-              <span className="text-xl font-bold text-blue-600">MyWebsite</span>
+              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="white" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 12a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Z" />
+                </svg>
+              </div>
+              <span className="text-xl font-bold text-blue-600">SydneyShuttle</span>
             </Link>
           </div>
 
@@ -23,17 +29,17 @@ const Navbar = () => {
             <Link href="/" className="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">
               Home
             </Link>
-            <Link href="#features" className="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">
-              Features
+            <Link href="#search" className="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">
+              Find Courts
             </Link>
-            <Link href="#contact" className="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">
-              Contact
+            <Link href="#venues" className="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">
+              Venues
             </Link>
             <Link
               href="#"
               className="ml-4 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
             >
-              Sign Up
+              My Bookings
             </Link>
           </div>
 
@@ -63,17 +69,17 @@ const Navbar = () => {
             <Link href="/" className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">
               Home
             </Link>
-            <Link href="#features" className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">
-              Features
+            <Link href="#search" className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">
+              Find Courts
             </Link>
-            <Link href="#contact" className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">
-              Contact
+            <Link href="#venues" className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">
+              Venues
             </Link>
             <Link
               href="#"
               className="block px-3 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md"
             >
-              Sign Up
+              My Bookings
             </Link>
           </div>
         </div>

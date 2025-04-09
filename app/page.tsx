@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import SearchForm from "./components/SearchForm";
 
 export default function Home() {
   return (
@@ -8,93 +9,152 @@ export default function Home() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center py-20 px-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white pt-28">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">Welcome to My Website</h1>
+      <section className="flex flex-col items-center justify-center text-center py-20 px-4 bg-gradient-to-r from-blue-600 to-green-500 text-white pt-28">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6">Sydney Badminton Court Finder</h1>
         <p className="text-xl md:text-2xl max-w-3xl mb-8">
-          A modern web application built with Next.js, TypeScript, and Tailwind CSS
+          Find and book available badminton courts across Sydney in just a few clicks
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
           <a
-            href="#features"
+            href="#search"
             className="px-6 py-3 bg-white text-blue-600 rounded-full font-medium hover:bg-gray-100 transition-colors"
           >
-            Explore Features
+            Find Courts Now
           </a>
           <a
-            href="#contact"
+            href="#how-it-works"
             className="px-6 py-3 bg-transparent border-2 border-white rounded-full font-medium hover:bg-white/10 transition-colors"
           >
-            Contact Us
+            How It Works
           </a>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-20 px-4 bg-white">
+      {/* Search Section */}
+      <section id="search" className="py-16 px-4 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Find Available Courts</h2>
+          <SearchForm />
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section id="how-it-works" className="py-20 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Key Features</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">How It Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="flex flex-col items-center text-center p-6 rounded-lg shadow-lg">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
+            {/* Step 1 */}
+            <div className="flex flex-col items-center text-center p-6 rounded-lg shadow-lg bg-white">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-2xl font-bold text-blue-600">
+                1
               </div>
-              <h3 className="text-xl font-semibold mb-2">Fast Performance</h3>
-              <p className="text-gray-600">Optimized for speed and user experience with Next.js.</p>
+              <h3 className="text-xl font-semibold mb-2">Enter Location & Time</h3>
+              <p className="text-gray-600">Enter your postcode or suburb and preferred date and time slot for playing.</p>
             </div>
             
-            {/* Feature 2 */}
-            <div className="flex flex-col items-center text-center p-6 rounded-lg shadow-lg">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                </svg>
+            {/* Step 2 */}
+            <div className="flex flex-col items-center text-center p-6 rounded-lg shadow-lg bg-white">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-2xl font-bold text-blue-600">
+                2
               </div>
-              <h3 className="text-xl font-semibold mb-2">Fully Customizable</h3>
-              <p className="text-gray-600">Tailored to your specific needs and requirements.</p>
+              <h3 className="text-xl font-semibold mb-2">Compare Options</h3>
+              <p className="text-gray-600">View available courts from different venues like NBC, KBC, and Alpha in one place.</p>
             </div>
             
-            {/* Feature 3 */}
-            <div className="flex flex-col items-center text-center p-6 rounded-lg shadow-lg">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
+            {/* Step 3 */}
+            <div className="flex flex-col items-center text-center p-6 rounded-lg shadow-lg bg-white">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-2xl font-bold text-blue-600">
+                3
               </div>
-              <h3 className="text-xl font-semibold mb-2">Secure & Reliable</h3>
-              <p className="text-gray-600">Built with security and reliability in mind.</p>
+              <h3 className="text-xl font-semibold mb-2">Book & Play</h3>
+              <p className="text-gray-600">Select your preferred venue, book your court, and get ready to play!</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 bg-gray-100">
+      {/* Venues Section */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Partner Venues</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* NBC */}
+            <div className="flex flex-col items-center text-center p-6 rounded-lg shadow-md border border-gray-100">
+              <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
+                <span className="text-2xl font-bold">NBC</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">NBC Badminton Centre</h3>
+              <p className="text-gray-600 mb-4">Premium courts with professional facilities across multiple Sydney locations.</p>
+              <span className="px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">12 Locations</span>
+            </div>
+            
+            {/* KBC */}
+            <div className="flex flex-col items-center text-center p-6 rounded-lg shadow-md border border-gray-100">
+              <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
+                <span className="text-2xl font-bold">KBC</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">KBC Badminton</h3>
+              <p className="text-gray-600 mb-4">Community-focused badminton venues with competitive pricing and friendly atmosphere.</p>
+              <span className="px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">8 Locations</span>
+            </div>
+            
+            {/* Alpha */}
+            <div className="flex flex-col items-center text-center p-6 rounded-lg shadow-md border border-gray-100">
+              <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
+                <span className="text-2xl font-bold">Alpha</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Alpha Badminton Club</h3>
+              <p className="text-gray-600 mb-4">High-quality courts with coaching services and tournament facilities.</p>
+              <span className="px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">5 Locations</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">What Our Users Say</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-blue-200 rounded-full mr-4"></div>
+                <div>
+                  <h4 className="font-semibold">Sarah L.</h4>
+                  <div className="flex text-yellow-400">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-600">"This site saved me so much time! I used to call multiple venues to check availability, but now I can see everything at once. Booked a court at NBC in under 2 minutes!"</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-green-200 rounded-full mr-4"></div>
+                <div>
+                  <h4 className="font-semibold">Michael T.</h4>
+                  <div className="flex text-yellow-400">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-600">"As someone who plays badminton twice a week, this website has been a game-changer. I can quickly compare prices across different venues and find the best deal."</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-16 px-4 bg-blue-600 text-white text-center">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Get in Touch</h2>
-          <form className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                <input type="text" id="name" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                <input type="email" id="email" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-              </div>
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-              <textarea id="message" rows={5} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
-            </div>
-            <div>
-              <button type="submit" className="w-full px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
-                Send Message
-              </button>
-            </div>
-          </form>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Find Your Court?</h2>
+          <p className="text-xl mb-8">Join thousands of badminton players in Sydney who use our platform to find and book courts.</p>
+          <a
+            href="#search"
+            className="inline-block px-8 py-4 bg-white text-blue-600 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors"
+          >
+            Search Courts Now
+          </a>
         </div>
       </section>
 
