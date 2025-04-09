@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# My Website
+
+A modern web application built with Next.js, TypeScript, and Tailwind CSS.
+
+## Features
+
+- 🚀 **Fast Performance**: Built on Next.js for optimal speed and user experience
+- 🎨 **Modern UI**: Beautiful and responsive design with Tailwind CSS
+- 🔒 **Type Safety**: Full TypeScript support for better developer experience
+- 📱 **Responsive**: Looks great on all devices - mobile, tablet, and desktop
+- 🧩 **Component-Based**: Modular architecture with reusable components
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18.0.0 or later
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/my-website.git
+cd my-website
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+my-website/
+├── app/                  # Next.js App Router
+│   ├── components/       # Reusable components
+│   │   ├── Navbar.tsx    # Navigation component
+│   │   └── Footer.tsx    # Footer component
+│   ├── globals.css       # Global styles
+│   ├── layout.tsx        # Root layout
+│   └── page.tsx          # Home page
+├── public/               # Static assets
+├── .eslintrc.json        # ESLint configuration
+├── next.config.js        # Next.js configuration
+├── package.json          # Project dependencies
+├── postcss.config.js     # PostCSS configuration
+├── tailwind.config.js    # Tailwind CSS configuration
+└── tsconfig.json         # TypeScript configuration
+```
 
-## Learn More
+## Customization
 
-To learn more about Next.js, take a look at the following resources:
+This project is designed to be easily customizable:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Update content in `app/page.tsx`
+- Modify styles in `app/globals.css` and component-specific styles
+- Add new components in `app/components/`
+- Configure Tailwind in `tailwind.config.js`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+This application can be easily deployed to Vercel:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyourusername%2Fmy-website)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Or follow these steps for manual deployment:
+
+1. Push your code to a GitHub repository
+2. Sign up for [Vercel](https://vercel.com)
+3. Import your repository
+4. Deploy!
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TypeScript](https://www.typescriptlang.org/)
