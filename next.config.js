@@ -5,8 +5,6 @@ const nextConfig = {
   
   // Enable experimental features
   experimental: {
-    // Faster refreshes
-    optimizeCss: true,
     // Better cache for faster builds
     turbotrace: true,
   },
