@@ -1,18 +1,29 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const SearchForm = () => {
-  const [postcode, setPostcode] = useState("");
-  const [date, setDate] = useState("");
-  const [timeSlot, setTimeSlot] = useState("");
-  const [numPlayers, setNumPlayers] = useState("2");
+  const router = useRouter();
+  const [postcode, setPostcode] = useState("2000");
+  const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
+  const [timeSlot, setTimeSlot] = useState("Evening (5PM - 10PM)");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would search for courts and display results
-    console.log("Searching for courts with:", { postcode, date, timeSlot, numPlayers });
-    alert("Search functionality will be implemented in a future update!");
+    
+    // Always include all venues in the search for demo purposes
+    const params = new URLSearchParams();
+    params.append("postcode", postcode);
+    params.append("date", date);
+    params.append("timeSlot", timeSlot);
+    params.append("venues", "nbc");
+    params.append("venues", "kbc");
+    params.append("venues", "alpha");
+    params.append("venues", "other");
+    
+    // Redirect to search results page
+    router.push(`/search?${params.toString()}`);
   };
 
   // Get today's date in YYYY-MM-DD format for the date input min value
@@ -55,68 +66,22 @@ const SearchForm = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Time Slot */}
-          <div>
-            <label htmlFor="timeSlot" className="block text-sm font-medium text-gray-700 mb-1">
-              Time Slot
-            </label>
-            <select
-              id="timeSlot"
-              value={timeSlot}
-              onChange={(e) => setTimeSlot(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
-              required
-            >
-              <option value="">Select a time slot</option>
-              <option value="morning">Morning (6AM - 12PM)</option>
-              <option value="afternoon">Afternoon (12PM - 5PM)</option>
-              <option value="evening">Evening (5PM - 10PM)</option>
-              <option value="specific">Specific time</option>
-            </select>
-          </div>
-
-          {/* Number of Players */}
-          <div>
-            <label htmlFor="numPlayers" className="block text-sm font-medium text-gray-700 mb-1">
-              Number of Players
-            </label>
-            <select
-              id="numPlayers"
-              value={numPlayers}
-              onChange={(e) => setNumPlayers(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            >
-              <option value="1">1 player</option>
-              <option value="2">2 players</option>
-              <option value="3">3 players</option>
-              <option value="4">4 players</option>
-              <option value="more">5+ players</option>
-            </select>
-          </div>
-        </div>
-
-        {/* Additional Options */}
+        {/* Time Slot */}
         <div>
-          <label className="text-sm font-medium text-gray-700 mb-1 block">Venue Options</label>
-          <div className="flex flex-wrap gap-4">
-            <label className="inline-flex items-center">
-              <input type="checkbox" className="rounded text-blue-600 focus:ring-blue-500" defaultChecked />
-              <span className="ml-2">NBC</span>
-            </label>
-            <label className="inline-flex items-center">
-              <input type="checkbox" className="rounded text-blue-600 focus:ring-blue-500" defaultChecked />
-              <span className="ml-2">KBC</span>
-            </label>
-            <label className="inline-flex items-center">
-              <input type="checkbox" className="rounded text-blue-600 focus:ring-blue-500" defaultChecked />
-              <span className="ml-2">Alpha</span>
-            </label>
-            <label className="inline-flex items-center">
-              <input type="checkbox" className="rounded text-blue-600 focus:ring-blue-500" defaultChecked />
-              <span className="ml-2">Other venues</span>
-            </label>
-          </div>
+          <label htmlFor="timeSlot" className="block text-sm font-medium text-gray-700 mb-1">
+            Time Slot
+          </label>
+          <select
+            id="timeSlot"
+            value={timeSlot}
+            onChange={(e) => setTimeSlot(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            required
+          >
+            <option value="Morning (6AM - 12PM)">Morning (6AM - 12PM)</option>
+            <option value="Afternoon (12PM - 5PM)">Afternoon (12PM - 5PM)</option>
+            <option value="Evening (5PM - 10PM)">Evening (5PM - 10PM)</option>
+          </select>
         </div>
 
         {/* Search Button */}

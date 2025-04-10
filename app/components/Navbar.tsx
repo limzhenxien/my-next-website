@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,11 +28,11 @@ const Navbar = () => {
             <Link href="/" className="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">
               Home
             </Link>
-            <Link href="#search" className="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">
+            <Link href="/#search" className="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">
               Find Courts
             </Link>
-            <Link href="#venues" className="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">
-              Venues
+            <Link href="/search" className="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">
+              All Venues
             </Link>
             <Link
               href="#"
@@ -69,11 +68,11 @@ const Navbar = () => {
             <Link href="/" className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">
               Home
             </Link>
-            <Link href="#search" className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">
+            <Link href="/#search" className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">
               Find Courts
             </Link>
-            <Link href="#venues" className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">
-              Venues
+            <Link href="/search" className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">
+              All Venues
             </Link>
             <Link
               href="#"

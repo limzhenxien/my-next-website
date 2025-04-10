@@ -1,91 +1,100 @@
-# SydneyShuttle - Badminton Court Booking
+# Sydney Badminton Court Finder
 
-A Sydney-based badminton court booking platform that allows users to find and book courts from various providers like NBC, KBC, and Alpha in one place.
+A modern web application built with Next.js, TypeScript, and Tailwind CSS that helps badminton players find and book courts across Sydney, Australia.
 
 ## Features
 
-- 🔍 **Location Search**: Find courts near you by entering your postcode or suburb
-- 📅 **Date & Time Selection**: Choose your preferred date and time for playing
-- 🏸 **Venue Comparison**: Compare availability and prices across different venues
-- 📱 **Responsive Design**: Works seamlessly across desktop, tablet, and mobile devices
-- 🔄 **Real-time Availability**: Get up-to-date information on court availability
-- 📊 **Venue Profiles**: Detailed information about each badminton venue
+- Search for badminton courts by postcode, date, and time
+- Browse real venues with detailed information
+- View court availability and pricing
+- Book courts directly through venue booking sites
+- Responsive design for mobile and desktop
 
-## Getting Started
+## Tech Stack
 
-### Prerequisites
+- **Frontend Framework**: Next.js 15+
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Deployment**: Vercel
 
-- Node.js 18.0.0 or later
-- npm or yarn
+## Local Development
 
-### Installation
+To run this project locally:
 
 1. Clone the repository:
-
-```bash
-git clone https://github.com/yourusername/sydney-shuttle.git
-cd sydney-shuttle
-```
+   ```bash
+   git clone <repository-url>
+   cd my-website
+   ```
 
 2. Install dependencies:
-
-```bash
-npm install
-# or
-yarn install
-```
+   ```bash
+   npm install
+   ```
 
 3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ## Project Structure
 
-```
-sydney-shuttle/
-├── app/                  # Next.js App Router
-│   ├── components/       # Reusable components
-│   │   ├── Navbar.tsx    # Navigation component
-│   │   ├── Footer.tsx    # Footer component
-│   │   └── SearchForm.tsx # Court search form
-│   ├── globals.css       # Global styles
-│   ├── layout.tsx        # Root layout
-│   └── page.tsx          # Home page
-├── public/               # Static assets
-├── .eslintrc.json        # ESLint configuration
-├── next.config.js        # Next.js configuration
-├── package.json          # Project dependencies
-├── postcss.config.js     # PostCSS configuration
-├── tailwind.config.js    # Tailwind CSS configuration
-└── tsconfig.json         # TypeScript configuration
-```
+- `/app` - Next.js app directory
+  - `/components` - Reusable UI components
+  - `/api` - API routes and services
+    - `/data` - Local data for venues and courts
+  - `/venues` - Venue detail pages
+  - `/search` - Search results page
 
-## Road Map
+## Deployment on Vercel
 
-- **Court Booking System**: Implement actual booking functionality with payment processing
-- **User Accounts**: Allow users to create accounts, view booking history, and save preferences
-- **Venue Integration**: API integration with partner venue booking systems
-- **Reviews & Ratings**: Allow users to rate and review venues
-- **Mobile App**: Develop native mobile applications for iOS and Android
+This project is optimized for deployment on Vercel. Follow these steps to deploy your own instance:
 
-## Partner Venues
+1. **Push your code to GitHub**:
+   ```bash
+   git add .
+   git commit -m "Ready for deployment"
+   git push
+   ```
 
-- **NBC Badminton Centre**: Premium courts with professional facilities
-- **KBC Badminton**: Community-focused badminton venues with competitive pricing
-- **Alpha Badminton Club**: High-quality courts with coaching services
+2. **Import the project to Vercel**:
+   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
+   - Click "New Project"
+   - Import your GitHub repository
+   - Select the "my-website" repository
+
+3. **Configure the project**:
+   - Framework Preset: Next.js
+   - Root Directory: `my-website` (if your code is in this subdirectory)
+   - Build Command: `npm run build`
+   - Output Directory: `.next`
+
+4. **Environment Variables**:
+   - No environment variables are required for the basic deployment
+
+5. **Deploy**:
+   - Click "Deploy"
+   - Vercel will build and deploy your application
+   - You'll receive a URL for your deployed site (e.g., `https://sydney-badminton-finder.vercel.app`)
+
+## Using Real Data (Experimental)
+
+The application currently uses local fallback data in the `/app/api/data/venues.ts` file. To use real data:
+
+1. Create API endpoints for your venue data in `/app/api/courts/...`
+2. Update the service in `/app/api/courts/service.ts` to fetch from real venue APIs
+3. Implement proper error handling and caching
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is MIT licensed.
 
-## Acknowledgments
+## Contact
 
-- [Next.js](https://nextjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [TypeScript](https://www.typescriptlang.org/)
+For any questions, please contact [your-email@example.com].

@@ -1,164 +1,184 @@
-import Image from "next/image";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import SearchForm from "./components/SearchForm";
+"use client";
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const router = useRouter();
+  const [postcode, setPostcode] = useState("2000");
+  const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
+  const [timeSlot, setTimeSlot] = useState("Evening (5PM - 10PM)");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Always include all venues in the search for demo purposes
+    const params = new URLSearchParams();
+    params.append("postcode", postcode);
+    params.append("date", date);
+    params.append("timeSlot", timeSlot);
+    params.append("venues", "nbc");
+    params.append("venues", "kbc");
+    params.append("venues", "alpha");
+    params.append("venues", "other");
+    
+    // Redirect to search results page
+    router.push(`/search?${params.toString()}`);
+  };
+
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
+    <div className="min-h-screen bg-white flex flex-col">
+      <header className="bg-blue-600 text-white p-4">
+        <div className="max-w-7xl mx-auto">
+          <h1 className="text-2xl font-bold">Sydney Badminton Court Finder</h1>
+        </div>
+      </header>
       
-      {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center py-20 px-4 bg-gradient-to-r from-blue-600 to-green-500 text-white pt-28">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">Sydney Badminton Court Finder</h1>
-        <p className="text-xl md:text-2xl max-w-3xl mb-8">
-          Find and book available badminton courts across Sydney in just a few clicks
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <a
-            href="#search"
-            className="px-6 py-3 bg-white text-blue-600 rounded-full font-medium hover:bg-gray-100 transition-colors"
-          >
-            Find Courts Now
-          </a>
-          <a
-            href="#how-it-works"
-            className="px-6 py-3 bg-transparent border-2 border-white rounded-full font-medium hover:bg-white/10 transition-colors"
-          >
-            How It Works
-          </a>
-        </div>
-      </section>
-
-      {/* Search Section */}
-      <section id="search" className="py-16 px-4 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Find Available Courts</h2>
-          <SearchForm />
-        </div>
-      </section>
-
-      {/* How It Works Section */}
-      <section id="how-it-works" className="py-20 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">How It Works</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Step 1 */}
-            <div className="flex flex-col items-center text-center p-6 rounded-lg shadow-lg bg-white">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-2xl font-bold text-blue-600">
-                1
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Enter Location & Time</h3>
-              <p className="text-gray-600">Enter your postcode or suburb and preferred date and time slot for playing.</p>
-            </div>
-            
-            {/* Step 2 */}
-            <div className="flex flex-col items-center text-center p-6 rounded-lg shadow-lg bg-white">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-2xl font-bold text-blue-600">
-                2
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Compare Options</h3>
-              <p className="text-gray-600">View available courts from different venues like NBC, KBC, and Alpha in one place.</p>
-            </div>
-            
-            {/* Step 3 */}
-            <div className="flex flex-col items-center text-center p-6 rounded-lg shadow-lg bg-white">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-2xl font-bold text-blue-600">
-                3
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Book & Play</h3>
-              <p className="text-gray-600">Select your preferred venue, book your court, and get ready to play!</p>
-            </div>
+      <main className="flex-grow py-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mt-6 mb-4">
+              Find and Book Badminton Courts in Sydney
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Search through Sydney's best badminton venues to find available courts for your next game
+            </p>
           </div>
-        </div>
-      </section>
+          
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+              <h3 className="text-2xl font-semibold mb-6 text-center">Find Available Courts</h3>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Location */}
+                  <div>
+                    <label htmlFor="postcode" className="block text-sm font-medium text-gray-700 mb-1">
+                      Postcode or Suburb
+                    </label>
+                    <input
+                      type="text"
+                      id="postcode"
+                      value={postcode}
+                      onChange={(e) => setPostcode(e.target.value)}
+                      placeholder="e.g. 2000 or Sydney CBD"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      required
+                    />
+                  </div>
 
-      {/* Venues Section */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Partner Venues</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* NBC */}
-            <div className="flex flex-col items-center text-center p-6 rounded-lg shadow-md border border-gray-100">
-              <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
-                <span className="text-2xl font-bold">NBC</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">NBC Badminton Centre</h3>
-              <p className="text-gray-600 mb-4">Premium courts with professional facilities across multiple Sydney locations.</p>
-              <span className="px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">12 Locations</span>
-            </div>
-            
-            {/* KBC */}
-            <div className="flex flex-col items-center text-center p-6 rounded-lg shadow-md border border-gray-100">
-              <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
-                <span className="text-2xl font-bold">KBC</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">KBC Badminton</h3>
-              <p className="text-gray-600 mb-4">Community-focused badminton venues with competitive pricing and friendly atmosphere.</p>
-              <span className="px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">8 Locations</span>
-            </div>
-            
-            {/* Alpha */}
-            <div className="flex flex-col items-center text-center p-6 rounded-lg shadow-md border border-gray-100">
-              <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
-                <span className="text-2xl font-bold">Alpha</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Alpha Badminton Club</h3>
-              <p className="text-gray-600 mb-4">High-quality courts with coaching services and tournament facilities.</p>
-              <span className="px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">5 Locations</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">What Our Users Say</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-blue-200 rounded-full mr-4"></div>
-                <div>
-                  <h4 className="font-semibold">Sarah L.</h4>
-                  <div className="flex text-yellow-400">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                  {/* Date */}
+                  <div>
+                    <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
+                      Date
+                    </label>
+                    <input
+                      type="date"
+                      id="date"
+                      value={date}
+                      onChange={(e) => setDate(e.target.value)}
+                      min={new Date().toISOString().split("T")[0]}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      required
+                    />
                   </div>
                 </div>
-              </div>
-              <p className="text-gray-600">"This site saved me so much time! I used to call multiple venues to check availability, but now I can see everything at once. Booked a court at NBC in under 2 minutes!"</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-green-200 rounded-full mr-4"></div>
+
+                {/* Time Slot */}
                 <div>
-                  <h4 className="font-semibold">Michael T.</h4>
-                  <div className="flex text-yellow-400">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                  </div>
+                  <label htmlFor="timeSlot" className="block text-sm font-medium text-gray-700 mb-1">
+                    Time Slot
+                  </label>
+                  <select
+                    id="timeSlot"
+                    value={timeSlot}
+                    onChange={(e) => setTimeSlot(e.target.value)}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    required
+                  >
+                    <option value="Morning (6AM - 12PM)">Morning (6AM - 12PM)</option>
+                    <option value="Afternoon (12PM - 5PM)">Afternoon (12PM - 5PM)</option>
+                    <option value="Evening (5PM - 10PM)">Evening (5PM - 10PM)</option>
+                  </select>
                 </div>
+
+                {/* Search Button */}
+                <div>
+                  <button
+                    type="submit"
+                    className="w-full px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium"
+                  >
+                    Search Available Courts
+                  </button>
+                </div>
+              </form>
+            </div>
+            
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Find Local Courts</h3>
+                <p className="text-gray-600">Search all badminton courts across Sydney by location</p>
               </div>
-              <p className="text-gray-600">"As someone who plays badminton twice a week, this website has been a game-changer. I can quickly compare prices across different venues and find the best deal."</p>
+              
+              <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Check Availability</h3>
+                <p className="text-gray-600">See real-time court availability for your preferred date and time</p>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Book Instantly</h3>
+                <p className="text-gray-600">Connect directly to venue booking systems for instant confirmation</p>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="py-16 px-4 bg-blue-600 text-white text-center">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Find Your Court?</h2>
-          <p className="text-xl mb-8">Join thousands of badminton players in Sydney who use our platform to find and book courts.</p>
-          <a
-            href="#search"
-            className="inline-block px-8 py-4 bg-white text-blue-600 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors"
-          >
-            Search Courts Now
-          </a>
+      </main>
+      
+      <footer className="bg-gray-800 text-white py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-lg font-semibold mb-4">About SydneyShuttle</h3>
+              <p className="text-gray-300">
+                Sydney's leading badminton court booking platform. Find and book courts at the best venues across Sydney.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Major Venues</h3>
+              <ul className="space-y-2 text-gray-300">
+                <li>NBC Sydney Olympic Park</li>
+                <li>KBC Badminton</li>
+                <li>Alpha Badminton Centre</li>
+                <li>Sydney University Badminton Club</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
+              <p className="text-gray-300">Email: info@sydneyshuttle.com.au</p>
+              <p className="text-gray-300">Phone: (02) 1234 5678</p>
+            </div>
+          </div>
+          <div className="mt-8 pt-8 border-t border-gray-700 text-center text-gray-300">
+            <p>© {new Date().getFullYear()} SydneyShuttle. All rights reserved.</p>
+          </div>
         </div>
-      </section>
-
-      <Footer />
+      </footer>
     </div>
   );
-}
+} 
